@@ -18,5 +18,11 @@ public class MavenprojectGUI {
                 new Ejercicio1().setVisible(true);
             }
         });
+        
+         java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run(){
+                new Ejercicio2().setVisible(true);
+            }
+        });
     }
 }

@@ -37,6 +37,7 @@ public class Ejercicio1 extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Contraseña = new javax.swing.JPasswordField();
         Registrarse = new java.awt.Button();
+        Ocultar = new javax.swing.JToggleButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -50,6 +51,7 @@ public class Ejercicio1 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Credenciales");
 
         jLabel1.setText("Inicio de Sesion");
 
@@ -67,7 +69,7 @@ public class Ejercicio1 extends javax.swing.JFrame {
 
         jLabel4.setText("Contraseña:");
 
-        Contraseña.setText("jPasswordField1");
+        Contraseña.setText("Contraseña");
         Contraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ContraseñaActionPerformed(evt);
@@ -87,6 +89,21 @@ public class Ejercicio1 extends javax.swing.JFrame {
             }
         });
 
+        Ocultar.setText("Ocultar");
+        Ocultar.setToolTipText("");
+        Ocultar.setMaximumSize(new java.awt.Dimension(313, 247));
+        Ocultar.setMinimumSize(new java.awt.Dimension(313, 247));
+        Ocultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OcultarMouseClicked(evt);
+            }
+        });
+        Ocultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OcultarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +116,7 @@ public class Ejercicio1 extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addComponent(Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -111,6 +128,8 @@ public class Ejercicio1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(Usuario, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(Contraseña))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Ocultar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,24 +145,18 @@ public class Ejercicio1 extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37)
+                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ocultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 59, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
-        String usuario= Usuario.getText();
-        String contraseña= new String(Contraseña.getPassword());
-        
-        if(usuario.equals("alumno@ulp.edu.ar") && contraseña.equals("12345678")){
-            JOptionPane.showMessageDialog(this, "¡Bienvenido "+ usuario + "!",
-                                                  "Login exitoso", 
-                                                   JOptionPane.INFORMATION_MESSAGE);
-        }else{ JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);}
+       
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void ContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ContraseñaActionPerformed
@@ -155,8 +168,25 @@ public class Ejercicio1 extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarseActionPerformed
 
     private void RegistrarseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RegistrarseMouseClicked
+         String usuario= Usuario.getText();
+        String contraseña= new String(Contraseña.getPassword());
         
+        if(usuario.equals("alumno@ulp.edu.ar") && contraseña.equals("12345678")){
+            JOptionPane.showMessageDialog(this, "¡Bienvenido "+ usuario + "!",
+                                                  "Login exitoso", 
+                                                   JOptionPane.INFORMATION_MESSAGE);
+        }else{ JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_RegistrarseMouseClicked
+
+    private void OcultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OcultarActionPerformed
+        if(Ocultar.isSelected()){
+            Contraseña.setEchoChar((char)0);
+        }else { Contraseña.setEchoChar('*');}
+    }//GEN-LAST:event_OcultarActionPerformed
+
+    private void OcultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OcultarMouseClicked
+
+    }//GEN-LAST:event_OcultarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -195,6 +225,7 @@ public class Ejercicio1 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField Contraseña;
+    private javax.swing.JToggleButton Ocultar;
     private java.awt.Button Registrarse;
     private java.awt.TextField Usuario;
     private javax.swing.JFrame jFrame1;
